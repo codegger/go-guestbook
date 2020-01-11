@@ -1,0 +1,28 @@
+{{ define "Index" }}
+    {{ template "Header" }}
+        {{ template "Menu" }}
+        <h2> List Guestbook </h2>
+        <div class="rTable">
+            <div class="rTableHeading">
+                <div class="rTableRow">
+                    <div class="rTableHead"><span style="font-weight: bold;">ID</span></div>
+                    <div class="rTableHead"><span style="font-weight: bold;">Name</span></div>
+                    <div class="rTableHead"><span style="font-weight: bold;">Email</span></div>
+                    <div class="rTableHead"><span style="font-weight: bold;">Action</span></div>
+                </div>
+            </div>
+        {{ range . }}
+            <div class="rTableRow">
+                <div class="rTableCell">{{ .Id }}</div>
+                <div class="rTableCell">{{ .Name }}</div>
+                <div class="rTableCell">{{ .Email }}</div>
+                <div class="rTableCell">
+                    <a href="/show?id={{ .Id }}">View</a> | 
+                    <a href="/edit?id={{ .Id }}">Edit</a> | 
+                    <a href="/delete?id={{ .Id }}">Delete</a>
+                </div>
+            </div>
+        {{ end }}
+        </div>
+    {{ template "Footer"}}
+{{ end }}
